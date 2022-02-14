@@ -3,10 +3,45 @@ import java.util.Random;
 class Main {
 
 	static class Numeros {
-		static public int geraNumero() {
+		static public int geraNumero(Boolean positivos) { //Se positivos for true, apenas números positivos serão gerados. Caso contrário, números negativos e positivos poderão ser gerados, cada um com 50% de probabildiade
 			Random gerador = new Random();
-			return gerador.nextInt(100) + 1;
+			if (positivos) {
+				return gerador.nextInt(100) + 1;
+			} else {
+				int probabilidade = gerador.nextInt(2) + 1;
+				if (probabilidade == 1) {
+					return gerador.nextInt(100) + 1;
+				} else {
+					return (gerador.nextInt(100) + 1) * -1;
+				}
+			}
 		}
+	}
+
+	static class VetorInteiros {
+		static public void imprimeVetorInteiros(int vetor[], int numero_elementos) {
+			for (int i = 0; i < numero_elementos; i++) {
+				System.out.print(vetor[i]);
+				if (i != vetor.length - 1) {
+					System.out.print(" ");
+				} else {
+					System.out.print("\n");
+				}
+			}
+		}
+	}
+
+	static class VetorDoubles {
+		static public void imprimeVetorDoubles(double vetor[], int numero_elementos) {	
+			for (int i = 0; i < numero_elementos; i++) {
+				System.out.printf("%.3f", vetor[i]);
+				if (i != vetor.length - 1) {
+					System.out.print(" ");
+				} else {
+					System.out.print("\n");
+				}
+			}
+		}	
 	}
 
 	static class Questao1 {
@@ -16,18 +51,12 @@ class Main {
 			int maior_elemento = 0;
 			double vetor_resposta[] = new double[10];
 			int i = 0;
-			for (i = 0; i < 10; i++) {
-				vetor[i] = Numeros.geraNumero();
-			}
 			//Geração dos números aleatórios para o vetor
 			for (i = 0; i < 10; i++) {
-				System.out.print(vetor[i]);
-				if (i != vetor.length - 1) {
-					System.out.print(" ");
-				} else {
-					System.out.print("\n");
-				}
+				vetor[i] = Numeros.geraNumero(true);
 			}
+			//Impressão do vetor gerado
+			VetorInteiros.imprimeVetorInteiros(vetor, 10);
 			//Definição do maior elemento do vetor
 			for (i = 0; i < 10; i++) {
 				if (vetor[i] > maior_elemento) {
@@ -39,38 +68,19 @@ class Main {
 				vetor_respostas[i] = Double.valueOf(vetor[i])/Double.valueOf(maior_elemento);
 			}
 			//Impressão do vetor de respostas
-			for (i = 0; i < 10; i++) {
-				System.out.printf("%.3f", vetor_respostas[i]);
-				if (i != vetor_respostas.length - 1) {
-					System.out.print(" ");
-				} else {
-					System.out.print("\n");
-				}
-			}
+			VetorDoubles.imprimeVetorDoubles(vetor_respostas, 10);
 		}
 	}
 
 	static class Questao2 {
-		private void imprimeVetor(int vetor[]) {
-			int i = 0;
-			for (i = 0; i < 20; i++) {
-				System.out.print(vetor[i]);				
-				if (i != vetor.length - 1) {
-					System.out.print(" ");
-				} else {
-					System.out.print("\n");
-				}
-			}
-		}
-
 		public void rQ2 () {
 			int vetor[] = new int[20];
 			int i = 0;
 			for (i = 0; i < 20; i++) {
-				vetor[i] = Numeros.geraNumero();
+				vetor[i] = Numeros.geraNumero(true);
 			}
 			//Imprime o vetori
-			imprimeVetor(vetor);
+			VetorInteiros.imprimeVetorInteiros(vetor, 20);
 			//Troca das posições dos elementos
 			for (i = 0; i < 10; i++) {
 				int aux = vetor[i];
@@ -78,9 +88,20 @@ class Main {
 				vetor[vetor.length - 1 - i] = aux;
 			}
 			//Imprime o vetor com os elementos trocados de posição
-			imprimeVetor(vetor);
+			VetorInteiros.imprimeVetorInteiros(vetor, 20);
 		}
 	}
+	
+	/*static class Questao3 {
+		public void rQ3() {
+			int vetor[] = new int[100];
+			int i = 0;
+			for (i = 0; i < 100; i++) {
+				vetor[i] = Numero.geraNumero(false);				
+			}
+			VetorInteiros.imprimeVetorInteiros(vetor, 100);
+		}
+	}*/
 
 	public static void main(String[] args) {
 		System.out.println("Questão 1:");
