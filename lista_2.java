@@ -68,6 +68,7 @@ class Main {
 				vetor_respostas[i] = Double.valueOf(vetor[i])/Double.valueOf(maior_elemento);
 			}
 			//Impressão do vetor de respostas
+			System.out.print("\n");
 			VetorDoubles.imprimeVetorDoubles(vetor_respostas, 10);
 		}
 	}
@@ -79,7 +80,7 @@ class Main {
 			for (i = 0; i < 20; i++) {
 				vetor[i] = Numeros.geraNumero(true);
 			}
-			//Imprime o vetori
+			//Iiprime o veior
 			VetorInteiros.imprimeVetorInteiros(vetor, 20);
 			//Troca das posições dos elementos
 			for (i = 0; i < 10; i++) {
@@ -88,30 +89,58 @@ class Main {
 				vetor[vetor.length - 1 - i] = aux;
 			}
 			//Imprime o vetor com os elementos trocados de posição
+			System.out.print("\n");
 			VetorInteiros.imprimeVetorInteiros(vetor, 20);
 		}
 	}
 	
-	/*static class Questao3 {
+	static class Questao3 {
 		public void rQ3() {
 			int vetor[] = new int[100];
 			int i = 0;
+			int tamanho_respostas = 0;
+			//Geração do vetor
+			//Ao gerar o vetor, conta-se a quantidade de valores positivos e não nulos no vetor original para definir o tamanho do vetor resposta, o computando na variável tamanho_repostas
 			for (i = 0; i < 100; i++) {
-				vetor[i] = Numero.geraNumero(false);				
+				vetor[i] = Numeros.geraNumero(false);
+				if (vetor[i] > 0) {
+					tamanho_respostas++;
+				}
 			}
+			//Imprime o vetor original
 			VetorInteiros.imprimeVetorInteiros(vetor, 100);
-		}
-	}*/
+			//Cria o vetor resposta
+			int vetor_respostas[] = new int[tamanho_respostas];
+			//Percorre mais uma vez o vetor original a fim de copiar os valores positivos e não nulos para o vetor resposta
+			int j = 0;
+			for (i = 0; i < 100; i++) {
+				if (vetor[i] > 0) {
+					vetor_respostas[j] = vetor[i];
+					j++;
+				}
+			}
+			//Imprime o vetor com os valores positivos e não nulos
+			System.out.print("\n");
+			VetorInteiros.imprimeVetorInteiros(vetor_respostas, tamanho_respostas);
+			System.out.print("\nNúmero de elementos que sobraram: " + tamanho_respostas);
 
+		}
+	}
+	
 	public static void main(String[] args) {
-		System.out.println("Questão 1:");
+		System.out.print("Questão 1:\n");
 		Questao1 objQuestao1 = new Questao1();
 		objQuestao1.rQ1();
-		System.out.print("\n");
+		System.out.print("\n\n");
 
 		System.out.println("Questão 2:");
 		Questao2 objQuestao2 = new Questao2();
 		objQuestao2.rQ2();
+		System.out.print("\n\n");
+
+		System.out.println("Questão 3:");
+		Questao3 objQuestao3 = new Questao3();
+		objQuestao3.rQ3();
 		System.out.print("\n");
 	}
 }
