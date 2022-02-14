@@ -15,14 +15,11 @@ class Main {
 			}
 			//Geração dos números aleatórios para o vetor
 			for (i = 0; i < 10; i++) {
-				if (i == 0) {
-					System.out.print("[");
-				}
 				System.out.print(vetor[i]);
 				if (i != vetor.length - 1) {
-					System.out.print(", ");
+					System.out.print(" ");
 				} else {
-					System.out.print("]\n");
+					System.out.print("\n");
 				}
 			}
 			//Definição do maior elemento do vetor
@@ -37,14 +34,11 @@ class Main {
 			}
 			//Impressão do vetor de respostas
 			for (i = 0; i < 10; i++) {
-				if (i == 0) {
-					System.out.print("[");
-				}
 				System.out.printf("%.3f", vetor_respostas[i]);
 				if (i != vetor_respostas.length - 1) {
-					System.out.print(", ");
+					System.out.print(" ");
 				} else {
-					System.out.print("]\n");
+					System.out.print("\n");
 				}
 			}
 		}
