@@ -266,7 +266,7 @@ class Main {
 					}
 				}
 			}
-			this.imprimeTriangulo(matriz);
+			imprimeTriangulo(matriz);
 		}
 	}
 	
