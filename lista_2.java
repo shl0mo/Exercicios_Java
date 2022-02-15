@@ -19,8 +19,8 @@ class Main {
 	}
 
 	static class Vetor {
-		static public void imprimeVetorInteiros(int vetor[], int numero_elementos) {
-			for (int i = 0; i < numero_elementos; i++) {
+		static public void imprimeVetorInteiros(int vetor[]) {
+			for (int i = 0; i < vetor.length; i++) {
 				System.out.print(vetor[i]);
 				if (i != vetor.length - 1) {
 					System.out.print(" ");
@@ -30,8 +30,8 @@ class Main {
 			}
 		}
 
-		static public void imprimeVetorDoubles(double vetor[], int numero_elementos) {	
-			for (int i = 0; i < numero_elementos; i++) {
+		static public void imprimeVetorDoubles(double vetor[]) {	
+			for (int i = 0; i < vetor.length; i++) {
 				System.out.printf("%.3f", vetor[i]);
 				if (i != vetor.length - 1) {
 					System.out.print(" ");
@@ -75,7 +75,7 @@ class Main {
 				vetor[i] = Numeros.geraNumero(true);
 			}
 			//Impressão do vetor gerado
-			Vetor.imprimeVetorInteiros(vetor, 10);
+			Vetor.imprimeVetorInteiros(vetor);
 			//Definição do maior elemento do vetor
 			for (i = 0; i < 10; i++) {
 				if (vetor[i] > maior_elemento) {
@@ -88,7 +88,7 @@ class Main {
 			}
 			//Impressão do vetor de respostas
 			System.out.print("\n");
-			Vetor.imprimeVetorDoubles(vetor_respostas, 10);
+			Vetor.imprimeVetorDoubles(vetor_respostas);
 		}
 	}
 
@@ -100,7 +100,7 @@ class Main {
 				vetor[i] = Numeros.geraNumero(true);
 			}
 			//Iiprime o veior
-			Vetor.imprimeVetorInteiros(vetor, 20);
+			Vetor.imprimeVetorInteiros(vetor);
 			//Troca das posições dos elementos
 			for (i = 0; i < 10; i++) {
 				int aux = vetor[i];
@@ -109,7 +109,7 @@ class Main {
 			}
 			//Imprime o vetor com os elementos trocados de posição
 			System.out.print("\n");
-			Vetor.imprimeVetorInteiros(vetor, 20);
+			Vetor.imprimeVetorInteiros(vetor);
 		}
 	}
 	
@@ -127,7 +127,7 @@ class Main {
 				}
 			}
 			//Imprime o vetor original
-			Vetor.imprimeVetorInteiros(vetor, 100);
+			Vetor.imprimeVetorInteiros(vetor);
 			//Cria o vetor resposta
 			int vetor_respostas[] = new int[tamanho_respostas];
 			//Percorre mais uma vez o vetor original a fim de copiar os valores positivos e não nulos para o vetor resposta
@@ -140,7 +140,7 @@ class Main {
 			}
 			//Imprime o vetor com os valores positivos e não nulos
 			System.out.print("\n");
-			Vetor.imprimeVetorInteiros(vetor_respostas, tamanho_respostas);
+			Vetor.imprimeVetorInteiros(vetor_respostas);
 			System.out.print("\nNúmero de elementos que sobraram: " + tamanho_respostas + "\n");
 
 		}
@@ -197,7 +197,7 @@ class Main {
 		}
 	}
 
-	static class Questao5 {
+	/*static class Questao5 {
 		public void rQ5() {
 			int M[][] = new int[10][10];
 			Matriz.preencheMatriz(M);
@@ -215,8 +215,18 @@ class Main {
 			System.out.print("\n\n");
 			System.out.println("Matriz com as linhas 2 e 8 trocadas:");
 			Matriz.imprimeMatriz(M);
+			//Troca as diagonais principal e secundária entre si
+			for (i = 0; i < M.length; i++) {
+				for (j = 0; j < M[i].length; j++) {
+					if (i == j) {
+						vet_aux[i] = M[i][j]; 
+					}
+				}
+			}
+			System.out.print("\n");
+			Vetor.imprimeVetorInteiros(vet_aux);
 		}
-	}
+	}*/
 	
 	public static void main(String[] args) {
 		System.out.print("Questão 1:\n");
@@ -239,9 +249,9 @@ class Main {
 		objQuestao4.rQ4();
 		System.out.print("\n\n");
 
-		System.out.println("Questão 5:");
-		Questao5 objQuestao5 = new Questao5();
-		objQuestao5.rQ5();
-		System.out.print("\n");
+		//System.out.println("Questão 5:");
+		//Questao5 objQuestao5 = new Questao5();
+		//objQuestao5.rQ5();
+		//System.out.print("\n");
 	}
 }
