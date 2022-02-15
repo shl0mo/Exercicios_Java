@@ -52,21 +52,11 @@ class Main {
 			}	
 		}
 
-		static public void imprimeMatrizInteiros(int matriz[][]) {
+		static public void imprimeMatriz(int matriz[][]) {
 			int i, j;
 			for (i = 0; i < matriz.length; i++) {
 				for (j = 0; j < matriz[i].length; j++) {
 					System.out.print(matriz[i][j] + " ");
-				}
-				System.out.print("\n");
-			}
-		}
-
-		static public void imprimeMatrizDoubles(double matriz[][]) {
-			int i, j;
-			for (i = 0; i < matriz.length; i++) {
-				for (j = 0; j < matriz[i].length; j++) {
-					System.out.printf("%.3f ", matriz[i][j]);
 				}
 				System.out.print("\n");
 			}
@@ -186,24 +176,45 @@ class Main {
 			}
 			//Imprime a matriz M
 			System.out.print("\nMatriz M:\n");
-			Matriz.imprimeMatrizInteiros(M);
+			Matriz.imprimeMatriz(M);
 			System.out.print("\n");
 			//Imprime a matriz N
 			System.out.print("\nMatriz N:\n");
-			Matriz.imprimeMatrizInteiros(N);
+			Matriz.imprimeMatriz(N);
 			System.out.print("\n");
 			//Imprime a matriz de soma
 			System.out.print("\nMatriz Ra (M + N):\n");
-			Matriz.imprimeMatrizInteiros(Ra);
+			Matriz.imprimeMatriz(Ra);
 			System.out.print("\n");
 			//Imprime a matriz de subtração
 			System.out.print("\nMatriz Rb (M - N):\n");
-			Matriz.imprimeMatrizInteiros(Rb);
+			Matriz.imprimeMatriz(Rb);
 			System.out.print("\n");
 			//Imprime a matriz de multiplicação
 			System.out.print("\nMatriz Rc (M X N):\n");
-			Matriz.imprimeMatrizInteiros(Rc);
+			Matriz.imprimeMatriz(Rc);
 			System.out.print("\n");
+		}
+	}
+
+	static class Questao5 {
+		public void rQ5() {
+			int M[][] = new int[10][10];
+			Matriz.preencheMatriz(M);
+			//Imprime a matriz original
+			System.out.println("Matriz original:");
+			Matriz.imprimeMatriz(M);
+			//Troca as linhas 2 e 8
+			int vet_aux[] = new int[10];
+			for (int i = 0; i < M[1].length; i++) {
+				vet_aux[i] = M[1][i];
+				M[1][i] = M[7][i];
+				M[7][i] = vet_aux[i];
+			}
+			//Imprime a matriz com as linhas trocadas
+			System.out.print("\n\n");
+			System.out.println("Matriz com as linhas 2 e 8 trocadas:");
+			Matriz.imprimeMatriz(M);
 		}
 	}
 	
@@ -223,9 +234,14 @@ class Main {
 		objQuestao3.rQ3();
 		System.out.print("\n");
 
-		System.out.println("Questão 4:");
+		System.out.println("\nQuestão 4:");
 		Questao4 objQuestao4 = new Questao4();
 		objQuestao4.rQ4();
+		System.out.print("\n\n");
+
+		System.out.println("Questão 5:");
+		Questao5 objQuestao5 = new Questao5();
+		objQuestao5.rQ5();
 		System.out.print("\n");
 	}
 }
