@@ -197,16 +197,19 @@ class Main {
 		}
 	}
 
-	/*static class Questao5 {
+	static class Questao5 {
 		public void rQ5() {
 			int M[][] = new int[10][10];
+			int tamanho_matriz = M.length;
+			int i = 0;
+			int j = 0;
 			Matriz.preencheMatriz(M);
 			//Imprime a matriz original
 			System.out.println("Matriz original:");
 			Matriz.imprimeMatriz(M);
 			//Troca as linhas 2 e 8
 			int vet_aux[] = new int[10];
-			for (int i = 0; i < M[1].length; i++) {
+			for (i = 0; i < M[1].length; i++) {
 				vet_aux[i] = M[1][i];
 				M[1][i] = M[7][i];
 				M[7][i] = vet_aux[i];
@@ -216,17 +219,26 @@ class Main {
 			System.out.println("Matriz com as linhas 2 e 8 trocadas:");
 			Matriz.imprimeMatriz(M);
 			//Troca as diagonais principal e secundária entre si
-			for (i = 0; i < M.length; i++) {
-				for (j = 0; j < M[i].length; j++) {
+			for (i = 0; i < tamanho_matriz; i++) {
+				for (j = 0; j < tamanho_matriz; j++) {
 					if (i == j) {
-						vet_aux[i] = M[i][j]; 
+						vet_aux[i] = M[i][j];
+						M[i][j] = M[i][tamanho_matriz - 1 - j];
+						M[i][tamanho_matriz - 1 - j] = vet_aux[i];
 					}
 				}
 			}
-			System.out.print("\n");
-			Vetor.imprimeVetorInteiros(vet_aux);
+			//Imprime a matriz com as diagonais trocadas
+			System.out.println("\nMatriz com as diagonais trocadas");
+			Matriz.imprimeMatriz(M);
 		}
-	}*/
+	}
+
+	static class Questao6 {
+		public void rQ6() {
+			
+		}
+	}
 	
 	public static void main(String[] args) {
 		System.out.print("Questão 1:\n");
@@ -249,9 +261,9 @@ class Main {
 		objQuestao4.rQ4();
 		System.out.print("\n\n");
 
-		//System.out.println("Questão 5:");
-		//Questao5 objQuestao5 = new Questao5();
-		//objQuestao5.rQ5();
-		//System.out.print("\n");
+		System.out.println("Questão 5:");
+		Questao5 objQuestao5 = new Questao5();
+		objQuestao5.rQ5();
+		System.out.print("\n");
 	}
 }
