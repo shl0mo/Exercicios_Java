@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 class Main {
 
@@ -235,8 +236,37 @@ class Main {
 	}
 
 	static class Questao6 {
+		private void imprimeTriangulo (int matriz[][]) {
+			int i, j;
+			for (i = 0; i < matriz.length; i++) {
+				for (j = 0; j < matriz[i].length; j++) {
+					if (matriz[i][j] != 0) {
+						System.out.print(matriz[i][j] + " ");	
+					} else {
+						System.out.print(" ");
+					}
+				}
+				System.out.print("\n");
+			}
+		}
+
 		public void rQ6() {
-			
+			Scanner sc = new Scanner(System.in);
+			System.out.print("Entre com o número de linhas do triângulo de Pascal a serem exibidas: ");
+			int n = sc.nextInt();
+			int matriz[][] = new int[n][n];
+			int i, j;
+			for (i = 0; i <  n; i++) {
+				for (j = 0; j < n; j++) {
+					if (j == 0) {
+						matriz[i][j] = 1;
+					}
+					if (i > 0 && j > 0) {
+						matriz[i][j] = matriz[i - 1][j] + matriz[i - 1][j - 1];
+					}
+				}
+			}
+			this.imprimeTriangulo(matriz);
 		}
 	}
 	
@@ -264,6 +294,11 @@ class Main {
 		System.out.println("Questão 5:");
 		Questao5 objQuestao5 = new Questao5();
 		objQuestao5.rQ5();
+		System.out.print("\n");
+
+		System.out.println("Questão 6:");
+		Questao6 objQuestao6 = new Questao6();
+		objQuestao6.rQ6();
 		System.out.print("\n");
 	}
 }
