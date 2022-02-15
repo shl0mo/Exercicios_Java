@@ -18,7 +18,7 @@ class Main {
 		}
 	}
 
-	static class VetorInteiros {
+	static class Vetor {
 		static public void imprimeVetorInteiros(int vetor[], int numero_elementos) {
 			for (int i = 0; i < numero_elementos; i++) {
 				System.out.print(vetor[i]);
@@ -29,9 +29,7 @@ class Main {
 				}
 			}
 		}
-	}
 
-	static class VetorDoubles {
 		static public void imprimeVetorDoubles(double vetor[], int numero_elementos) {	
 			for (int i = 0; i < numero_elementos; i++) {
 				System.out.printf("%.3f", vetor[i]);
@@ -42,6 +40,37 @@ class Main {
 				}
 			}
 		}	
+	}
+
+	static class Matriz {
+		static public void preencheMatriz(int matriz[][]) {
+			int i, j;
+			for (i = 0; i < matriz.length; i++) {
+				for (j = 0; j < matriz[i].length; j++) {
+					matriz[i][j] = Numeros.geraNumero(true);
+				}
+			}	
+		}
+
+		static public void imprimeMatrizInteiros(int matriz[][]) {
+			int i, j;
+			for (i = 0; i < matriz.length; i++) {
+				for (j = 0; j < matriz[i].length; j++) {
+					System.out.print(matriz[i][j] + " ");
+				}
+				System.out.print("\n");
+			}
+		}
+
+		static public void imprimeMatrizDoubles(double matriz[][]) {
+			int i, j;
+			for (i = 0; i < matriz.length; i++) {
+				for (j = 0; j < matriz[i].length; j++) {
+					System.out.printf("%.3f ", matriz[i][j]);
+				}
+				System.out.print("\n");
+			}
+		}
 	}
 
 	static class Questao1 {
@@ -56,7 +85,7 @@ class Main {
 				vetor[i] = Numeros.geraNumero(true);
 			}
 			//Impressão do vetor gerado
-			VetorInteiros.imprimeVetorInteiros(vetor, 10);
+			Vetor.imprimeVetorInteiros(vetor, 10);
 			//Definição do maior elemento do vetor
 			for (i = 0; i < 10; i++) {
 				if (vetor[i] > maior_elemento) {
@@ -69,7 +98,7 @@ class Main {
 			}
 			//Impressão do vetor de respostas
 			System.out.print("\n");
-			VetorDoubles.imprimeVetorDoubles(vetor_respostas, 10);
+			Vetor.imprimeVetorDoubles(vetor_respostas, 10);
 		}
 	}
 
@@ -81,7 +110,7 @@ class Main {
 				vetor[i] = Numeros.geraNumero(true);
 			}
 			//Iiprime o veior
-			VetorInteiros.imprimeVetorInteiros(vetor, 20);
+			Vetor.imprimeVetorInteiros(vetor, 20);
 			//Troca das posições dos elementos
 			for (i = 0; i < 10; i++) {
 				int aux = vetor[i];
@@ -90,7 +119,7 @@ class Main {
 			}
 			//Imprime o vetor com os elementos trocados de posição
 			System.out.print("\n");
-			VetorInteiros.imprimeVetorInteiros(vetor, 20);
+			Vetor.imprimeVetorInteiros(vetor, 20);
 		}
 	}
 	
@@ -108,7 +137,7 @@ class Main {
 				}
 			}
 			//Imprime o vetor original
-			VetorInteiros.imprimeVetorInteiros(vetor, 100);
+			Vetor.imprimeVetorInteiros(vetor, 100);
 			//Cria o vetor resposta
 			int vetor_respostas[] = new int[tamanho_respostas];
 			//Percorre mais uma vez o vetor original a fim de copiar os valores positivos e não nulos para o vetor resposta
@@ -121,9 +150,60 @@ class Main {
 			}
 			//Imprime o vetor com os valores positivos e não nulos
 			System.out.print("\n");
-			VetorInteiros.imprimeVetorInteiros(vetor_respostas, tamanho_respostas);
-			System.out.print("\nNúmero de elementos que sobraram: " + tamanho_respostas);
+			Vetor.imprimeVetorInteiros(vetor_respostas, tamanho_respostas);
+			System.out.print("\nNúmero de elementos que sobraram: " + tamanho_respostas + "\n");
 
+		}
+	}
+
+	static class Questao4 {
+		public void rQ4() {
+			int M[][] = new int[6][6];
+			int N[][] = new int[6][6];
+			int Ra[][] = new int[6][6];
+			int Rb[][] = new int[6][6];
+			int Rc[][] = new int[6][6];
+			int i, j;
+			Matriz.preencheMatriz(M);
+			Matriz.preencheMatriz(N);
+			//Soma e subtração entre M e N
+			for (i = 0; i < M.length; i++) {
+				for (j = 0; j < M.length; j++) {
+					Ra[i][j] = M[i][j] + N[i][j];
+					Rb[i][j] = M[i][j] - N[i][j];
+				}
+			}
+			//Multiplicação de M por N
+			int k = 0;
+			for (i = 0; i < M.length; i++) {
+				for (j = 0; j < M[i].length; j++) {
+					int soma = 0;
+					for (k = 0; k < M[i].length; k++) {
+						soma = soma + M[i][k] * N[k][j];
+					}
+					Rc[i][j] = soma;
+				}
+			}
+			//Imprime a matriz M
+			System.out.print("\nMatriz M:\n");
+			Matriz.imprimeMatrizInteiros(M);
+			System.out.print("\n");
+			//Imprime a matriz N
+			System.out.print("\nMatriz N:\n");
+			Matriz.imprimeMatrizInteiros(N);
+			System.out.print("\n");
+			//Imprime a matriz de soma
+			System.out.print("\nMatriz Ra (M + N):\n");
+			Matriz.imprimeMatrizInteiros(Ra);
+			System.out.print("\n");
+			//Imprime a matriz de subtração
+			System.out.print("\nMatriz Rb (M - N):\n");
+			Matriz.imprimeMatrizInteiros(Rb);
+			System.out.print("\n");
+			//Imprime a matriz de multiplicação
+			System.out.print("\nMatriz Rc (M X N):\n");
+			Matriz.imprimeMatrizInteiros(Rc);
+			System.out.print("\n");
 		}
 	}
 	
@@ -141,6 +221,11 @@ class Main {
 		System.out.println("Questão 3:");
 		Questao3 objQuestao3 = new Questao3();
 		objQuestao3.rQ3();
+		System.out.print("\n");
+
+		System.out.println("Questão 4:");
+		Questao4 objQuestao4 = new Questao4();
+		objQuestao4.rQ4();
 		System.out.print("\n");
 	}
 }
