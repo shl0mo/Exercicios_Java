@@ -13,9 +13,19 @@ class Main {
 		public String toString() {
 			return "(" + this.left + ", " + this.right + ")";
 		}
+
+		public boolean equals(Pair p1, Pair p2) {
+			if (p1.left.equals(p2.left) && p1.right.equals(p2.right)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 
 	public static void main(String args[]) {
-		System.out.println("Olá, mundo");
+		Pair objPair = new Pair("Esquerda", "Direita");
+		Pair objPair2 = new Pair("Esquerda", "Direita");
+		System.out.println(objPair.equals(objPair, objPair2));
 	}
 }
