@@ -33,10 +33,10 @@ class Main {
                         String array_s1[] = getList(s1);
                         String array_s2[] = getList(s2);
                         if (array_s1.length != array_s2.length) {
-                            throw IncompatibleArgumentsExceptions();
-                        }
-                    } catch (IncompatibleArgumentsExceptions) {
-                        System.out.println("\nArrays com diferentes tamanhos");
+				throw new Exception();
+			}
+                    } catch (Exception e) {
+                        System.out.println("Arrays com diferentes tamanhos");
                     }
                     this.pairs = obtainPairs(s1, s2);
 		}
@@ -67,6 +67,6 @@ class Main {
 	}
 	
 	public static void main(String args[]) {
-            Pairing pairing = new Pairing("Teste 1", "Teste 2");
+            Pairing pairing = new Pairing("Teste, 1", "Teste, 2, 3");
 	}
 }
