@@ -11,7 +11,7 @@ class Main {
 			} else {
 				int probabilidade = gerador.nextInt(2) + 1;
 				if (probabilidade == 1) {
-					return gerador.nextInt(100) + 1;
+					return gerador.nextInt(101);
 				} else {
 					return (gerador.nextInt(100) + 1) * -1;
 				}
