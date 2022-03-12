@@ -1,19 +1,49 @@
 import java.util.ArrayList;
 
 public class Main {
-	static class Reserva {
-	    private ArrayList hospedes;
+
+	public class Reserva {
+	    
+	    private ArrayLis<Hospedes>t hospedes;
 	    private Suite suite;
 	    private int quantidadePessoas;
 	    private int quantidadeDias;
-    
+	    
+	    Reserva (ArrayList<Hospedes> hospedes, Suite suite, quantidadeDias) {
+		this.hospedes = hospedes;
+		this.suite = suite;
+		for (int i = 0; i < this.hospedes.size(); i++) {
+		    if (this.hospedes.get(i).idade >= 2) {
+		        this.quantidadePessoas = this.quantidadePessoas + 1;
+		    }
+		}
+		this.quantidadeDias = quantidadeDias;        
+	    }
+	    
+	    public int getQuantidadePessoas () {
+		return this.quantidadePessoas;
+	    }
+	    
+	    public int getQuantidadeDias () {
+		return this.quantidadeDias;
+	    }
+	    
 	    public boolean verificarCapacidade() {
-        	return true;
+		if (this.getQuantidadePessoas() <= this.suite.getCapacidade()) {
+		    return true;
+		} else {
+		    return false;
+		}
 	    }
-    
+	    
 	    public double calcularDiaria() {
-	        return 2.0;
+		if (this.quantidadePessoas <= 7) {
+		    return this.Suite.getValorDiaria() * this.quantidadeDias;
+		} else {
+		    return 0.9*(this.Suite.getValorDiaria() * this.quantidadeDias);
+		}
 	    }
+	    
 	}
 
 	public class Hospede {
@@ -58,7 +88,7 @@ public class Main {
 	}
 	
 	public class Suite {
-	    
+    
 	    private int numero;
 	    private String tipo;
 	    private int capacidade;
@@ -97,6 +127,7 @@ public class Main {
 	    }
 	    
 	}
+
 
 	
 	public static void main(String[] args) {
