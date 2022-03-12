@@ -4,16 +4,16 @@ public class Main {
 
 	public class Reserva {
 	    
-	    private ArrayLis<Hospedes>t hospedes;
+	    private ArrayList<Hospede> hospedes;
 	    private Suite suite;
 	    private int quantidadePessoas;
 	    private int quantidadeDias;
 	    
-	    Reserva (ArrayList<Hospedes> hospedes, Suite suite, quantidadeDias) {
+	    Reserva (ArrayList<Hospede> hospedes, Suite suite, int quantidadeDias) {
 		this.hospedes = hospedes;
 		this.suite = suite;
 		for (int i = 0; i < this.hospedes.size(); i++) {
-		    if (this.hospedes.get(i).idade >= 2) {
+		    if (this.hospedes.get(i).getIdade() >= 2) {
 		        this.quantidadePessoas = this.quantidadePessoas + 1;
 		    }
 		}
@@ -38,9 +38,9 @@ public class Main {
 	    
 	    public double calcularDiaria() {
 		if (this.quantidadePessoas <= 7) {
-		    return this.Suite.getValorDiaria() * this.quantidadeDias;
+		    return this.suite.getValorDiaria() * this.quantidadeDias;
 		} else {
-		    return 0.9*(this.Suite.getValorDiaria() * this.quantidadeDias);
+		    return 0.9*(this.suite.getValorDiaria() * this.quantidadeDias);
 		}
 	    }
 	    
@@ -52,6 +52,13 @@ public class Main {
 	    private String nome;
 	    private String endereco;
 	    private int idade;
+	    
+	    Hospede (int codigo, String nome, String endereco, int idade) {
+		setCodigo(codigo);
+		setNome(nome);
+		setEndereco(endereco);
+		setIdade(idade);
+	    }
 	    
 	    public int getCodigo () {
 		return this.codigo;
@@ -88,11 +95,18 @@ public class Main {
 	}
 	
 	public class Suite {
-    
+	    
 	    private int numero;
 	    private String tipo;
 	    private int capacidade;
 	    private double valorDiaria;
+	    
+	    Suite (int numero, String tipo, int capacidade, double valorDiaria) {
+		setNumero(numero);
+		setTipo(tipo);
+		setCapacidade(capacidade);
+		setValorDiaria(valorDiaria);
+	    }
 	    
 	    public int getNumero () {
 		return this.numero;
@@ -110,7 +124,7 @@ public class Main {
 		return this.valorDiaria;
 	    }
 	    
-	    public void getNumero (int numero) {
+	    public void setNumero (int numero) {
 		this.numero = numero;
 	    }
 	    
@@ -125,7 +139,6 @@ public class Main {
 	    public void setValorDiaria (double valorDiaria) {
 		this.valorDiaria = valorDiaria;
 	    }
-	    
 	}
 
 
