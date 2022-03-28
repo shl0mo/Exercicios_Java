@@ -1,0 +1,8 @@
+Êþº¾   1 (  school/gener/Main$1  java/lang/Object  school/gener/NumListener <init> ()V Code
+     LineNumberTable LocalVariableTable this Lschool/gener/Main$1; onNum (I)V	    java/lang/System   out Ljava/io/PrintStream;
+    java/io/PrintStream   println num I 
+SourceFile 	Main.java EnclosingMethod # school/gener/Main % & main ([Ljava/lang/String;)V InnerClasses               	   /     *· 
+±                            	   @     ² ¶ ±       
+    	  
+                          !    " $ '   
+        
