@@ -1,4 +1,3 @@
-
 package br.edu.icomp.ufam.lab_heranca;
 
 public class Quadrado extends Retangulo {
